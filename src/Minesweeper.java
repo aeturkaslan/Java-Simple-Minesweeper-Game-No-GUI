@@ -70,27 +70,27 @@ public class Minesweeper {
 			board[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
 		}
 		
+		//These check the diagonal adjacents of the selected coordinates by the user.
+		
+				if(map[r-1][c+1] == -1) {	//if the upper right cross of the selected location has mine,
+					board[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
+				}
+				if(map[r+1][c+1] == -1) {	//if the lower right cross of the selected location has mine,
+					board[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
+				}
+				if(map[r+1][c-1] == -1) {	//if the lower left cross of the selected location has mine,
+					board[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
+				}
+				if(map[r-1][c-1] == -1) {	//if the upper left cross of the selected location has mine,
+					board[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
+				}		
+		
 		if (board[r][c] == 0) {	//if the selected location is still 0, which indicates no adjacent of it has mine, 
 			board[r][c] = -2;	//change the selected location's value from 0 to -2.
 		}
 		
+	
 		
-		
-		//These check the diagonal adjacents of the selected coordinates by the user. Uncomment if you want to include.
-		/*
-		if(map[r-1][c+1] == -1) {	//if the upper right cross of the selected location has mine,
-			map[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
-		}
-		if(map[r+1][c+1] == -1) {	//if the lower right cross of the selected location has mine,
-			map[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
-		}
-		if(map[r+1][c-1] == -1) {	//if the lower left cross of the selected location has mine,
-			map[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
-		}
-		if(map[r-1][c-1] == -1) {	//if the upper left cross of the selected location has mine,
-			map[r][c]++ ;		//increase the user's selected location by 1 (it was initially 0)
-		}
-		*/
 	}
 	
 	public void prepareGame() {
@@ -124,7 +124,7 @@ public class Minesweeper {
 		System.out.println("*Number of mines are 1/4 of the board size.");
 		System.out.println("*If the selected coordinates(row,column) of the user has a mine, the game ends.");
 		System.out.println("*If the selected coordinates(row,column) of the user has no mine but the adjacent does,");
-		System.out.println("	-The selected block changes from 0 to number of mines that its adjacents of top, bottom, left and right. (No diagonal adjacent's mines are counted!)");
+		System.out.println("	-The selected block changes from 0 to number of mines that its adjacents have.");
 		System.out.println("*If the selected coordinates(row,column) of the user has no mine and the adjacents don't have any mines either,");
 		System.out.println("	-The selected block changes from 0 to -2");
 		System.out.println("*This code is designed as non-coder user-friendly. Therefore there is no row 0 or column 0. Code interpretes it in that way though.");
